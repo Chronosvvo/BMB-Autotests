@@ -1,7 +1,9 @@
 from playwright.sync_api import Page, expect
 import config.urls as urls
+import pytest
 
 
+@pytest.mark.smoke
 def test_navigation_logo_header(homepage: Page) -> None:
     homepage.get_by_test_id("header-logo").click()
 
@@ -22,17 +24,20 @@ def test_navigation_reviews_header(homepage):
 
     expect(homepage.locator("#reviews")).to_be_visible()
 
+@pytest.mark.smoke
 def test_navigation_contacts_header(homepage):
     homepage.get_by_test_id("header-nav-contact").click()
 
     expect(homepage.locator("#contact")).to_be_visible()
 
+@pytest.mark.smoke
 def test_navigation_buy_ticket_button_header(homepage):
     with homepage.context.expect_page() as buy_ticket_page:
         homepage.get_by_test_id("header-buy-ticket").click()
 
     expect(buy_ticket_page.value).to_have_url(urls.buy_ticket_url)
 
+@pytest.mark.smoke
 def test_navigation_whatsapp_button_header(homepage):
     with homepage.context.expect_page() as whatsapp_page:
         homepage.get_by_test_id("header-whatsapp").click()

@@ -1,9 +1,9 @@
 from importlib import import_module
-
 from playwright.sync_api import Page, expect
 import config.urls as urls
+import pytest
 
-
+@pytest.mark.smoke
 def test_buy_ticket_link(homepage: Page) -> None:
 
 
@@ -11,7 +11,7 @@ def test_buy_ticket_link(homepage: Page) -> None:
 
     expect(homepage.get_by_test_id("header-buy-ticket-mobile")).to_have_attribute("href", urls.buy_ticket_url)
 
-
+@pytest.mark.smoke
 def test_whatsapp_link(homepage: Page) -> None:
 
 

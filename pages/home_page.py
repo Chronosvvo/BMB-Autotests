@@ -46,6 +46,9 @@ class MainPage():
         self.contact_message_field_counter = self.contact_form.get_by_test_id("contact-field-message")
         # локатор input date
         self.contact_date_input_loc = self.contact_form.get_by_test_id("contact-input-date")
+        # успешная отправка формы
+        self.success_send_contact_form = self.page.get_by_test_id("contact-success")
+
 
 
 

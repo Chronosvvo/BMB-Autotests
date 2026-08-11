@@ -1,7 +1,7 @@
 from playwright.sync_api import Page, expect
 
 
-from utils.dates import date_to_calendar_label, MONTHS_RU
+from utils.dates import date_to_calendar_label
 from datetime import date, timedelta
 import pytest
 from pages.home_page import MainPage
@@ -13,7 +13,7 @@ from test_data.valid_data import VALID_PHONES
 from test_data.invalid_data import INVALID_PHONES
 
 
-
+@pytest.mark.smoke
 def test_contact_form_is_visible(homepage):
     bmb_main_page = MainPage(homepage)
     expect(bmb_main_page.contact_form).to_be_visible()
@@ -32,6 +32,8 @@ def test_contact_form_required_fields_are_marked(homepage):
     expect(bmb_main_page.contact_email_input).to_have_attribute("aria-required", "true")
     expect(bmb_main_page.contact_phone_input).to_have_attribute("aria-required", "true")
 
+
+@pytest.mark.smoke
 def test_contact_form_empty_with_submit_button(homepage):
     bmb_main_page = MainPage(homepage)
 
@@ -211,6 +213,31 @@ def test_contact_form_choose_event_type(homepage, event_type):
     bmb_main_page.select_event_type(event_type)
 
     expect(bmb_main_page.contact_event_type_trigger).to_contain_text(event_type)
+
+@pytest.mark.smoke
+def test_send_full_valid_data_contact_form(homepage, ):
+    bmb_main_page = MainPage(homepage)
+
+    bmb_main_page.fill_name("Тест BMB Имя")
+    bmb_main_page.fill_email("test_bmb_email@bmb.band")
+    bmb_main_page.fill_phone("+994568541235")
+    bmb_main_page.open_event_type()
+    bmb_main_page.select_event_type("Свадьба")
+    bmb_main_page.open_calendar()
+    bmb_main_page.select_date(date.today())
+    bmb_main_page.fill_message("Тестовое сообщение, которое отправлено при прохождении Smoke теста")
+
+    with homepage.expect_response(
+        lambda responce: "_serverFn/" in responce.url
+    ) as response_info:
+        bmb_main_page.submit_button_click()
+
+    response = response_info.value
+
+    assert response.status == 200
+
+    expect(bmb_main_page.success_send_contact_form).to_be_visible()
+
 
 
 
