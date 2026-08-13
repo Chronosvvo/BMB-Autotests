@@ -56,3 +56,21 @@ def pytest_runtest_teardown(item, nextitem):
             name="Playwright Trace",
             attachment_type="application/zip",
         )
+
+
+
+PRIORITY_TO_SEVERITY = {
+    "p0": allure.severity_level.BLOCKER,
+    "p1": allure.severity_level.CRITICAL,
+    "p2": allure.severity_level.NORMAL,
+    "p3": allure.severity_level.MINOR,
+    "p4": allure.severity_level.TRIVIAL,
+}
+
+
+@pytest.hookimpl(tryfirst=True)
+def pytest_runtest_setup(item):
+    for priority, severity in PRIORITY_TO_SEVERITY.items():
+        if item.get_closest_marker(priority):
+            allure.dynamic.severity(severity)
+            break
