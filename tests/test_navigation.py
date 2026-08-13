@@ -11,6 +11,7 @@ def test_navigation_logo_header(page_ru: Page) -> None:
     header_page.logo_header_click()
     expect(page_ru).to_have_url("/ru")
 
+@pytest.mark.regression
 @pytest.mark.p3
 def test_navigation_video_header(page_ru):
     header_page = header.Header(page_ru)
@@ -18,6 +19,7 @@ def test_navigation_video_header(page_ru):
     header_page.video_menu_button.click()
     expect(page_ru.locator("#videos")).to_be_visible()
 
+@pytest.mark.regression
 @pytest.mark.p3
 def test_navigation_repertoire_header(page_ru):
     header_page = header.Header(page_ru)
@@ -25,6 +27,7 @@ def test_navigation_repertoire_header(page_ru):
     header_page.repertoire_menu_button.click()
     expect(page_ru).to_have_url(urls.repertoire_url)
 
+@pytest.mark.regression
 @pytest.mark.p3
 def test_navigation_reviews_header(page_ru):
     header_page = header.Header(page_ru)

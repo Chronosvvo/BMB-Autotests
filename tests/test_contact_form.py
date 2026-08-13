@@ -19,6 +19,7 @@ def test_contact_form_is_visible(page_ru):
     bmb_main_page = MainPage(page_ru)
     expect(bmb_main_page.contact_form).to_be_visible()
 
+@pytest.mark.regression
 @pytest.mark.p1
 def test_contact_form_required_fields_are_visible(page_ru):
     bmb_main_page = MainPage(page_ru)
@@ -27,6 +28,7 @@ def test_contact_form_required_fields_are_visible(page_ru):
     expect(bmb_main_page.contact_phone_input).to_be_visible()
     expect(bmb_main_page.contact_submit_button).to_be_visible()
 
+@pytest.mark.regression
 @pytest.mark.p3
 def test_contact_form_required_fields_are_marked(page_ru):
     bmb_main_page = MainPage(page_ru)
@@ -54,6 +56,7 @@ def test_contact_form_empty_with_submit_button(page_ru):
 
 
 # Тест валидных данных в поле Имя
+@pytest.mark.regression
 @pytest.mark.p3
 @pytest.mark.parametrize("name", VALID_NAMES)
 def test_valid_name(page_ru, name):
@@ -66,6 +69,7 @@ def test_valid_name(page_ru, name):
     assert not bmb_main_page.contact_error_name.is_visible()
 
 # Тест невалидных данных в поле Имя
+@pytest.mark.regression
 @pytest.mark.p3
 @pytest.mark.parametrize("name", INVALID_NAMES)
 def test_invalid_name(page_ru, name):
@@ -78,6 +82,7 @@ def test_invalid_name(page_ru, name):
     assert bmb_main_page.contact_error_name.is_visible()
 
 # Тест валидных данных в поле Телефон
+@pytest.mark.regression
 @pytest.mark.p3
 @pytest.mark.parametrize("phone", VALID_PHONES)
 def test_valid_phone(page_ru, phone):
@@ -88,6 +93,7 @@ def test_valid_phone(page_ru, phone):
     assert not bmb_main_page.contact_error_phone.is_visible()
 
 # Тест невалидных данных в поле Телефон
+@pytest.mark.regression
 @pytest.mark.p3
 @pytest.mark.parametrize("phone", INVALID_PHONES)
 def test_invalid_phone(page_ru, phone):
@@ -98,6 +104,7 @@ def test_invalid_phone(page_ru, phone):
     assert bmb_main_page.contact_error_phone.is_visible()
 
 # Тест валидных данных в поле email
+@pytest.mark.regression
 @pytest.mark.p3
 @pytest.mark.parametrize("email", VALID_EMAILS)
 def test_valid_email(page_ru, email):
@@ -108,6 +115,7 @@ def test_valid_email(page_ru, email):
     assert not bmb_main_page.contact_error_email.is_visible()
 
 # Тест невалидных данных в поле email
+@pytest.mark.regression
 @pytest.mark.p3
 @pytest.mark.parametrize("email", INVALID_EMAILS)
 def test_invalid_email(page_ru, email):
@@ -117,6 +125,7 @@ def test_invalid_email(page_ru, email):
 
     assert bmb_main_page.contact_error_email.is_visible()
 
+@pytest.mark.regression
 @pytest.mark.p4
 def test_contact_form_message_validation(page_ru):
     bmb_main_page = MainPage(page_ru)
@@ -140,7 +149,7 @@ def test_contact_form_message_validation(page_ru):
     expect(bmb_main_page.contact_message_field_counter).to_contain_text(f"3999/4000")
 
 
-
+@pytest.mark.regression
 @pytest.mark.p3
 def test_contact_form_date_picker_is_opened(page_ru):
     bmb_main_page = MainPage(page_ru)
@@ -154,13 +163,14 @@ def test_contact_form_date_picker_is_opened(page_ru):
     bmb_main_page.open_calendar()
     expect(bmb_main_page.contact_date_trigger).to_have_attribute("aria-expanded", "false")
 
-
+@pytest.mark.regression
 @pytest.mark.p4
 def test_contact_date_cannot_be_filled(page_ru: Page) -> None:
     bmb_main_page = MainPage(page_ru)
 
     expect(bmb_main_page.contact_date_input_loc).to_be_hidden()
 
+@pytest.mark.regression
 @pytest.mark.p3
 @pytest.mark.parametrize(
     "days_from_today",
@@ -168,6 +178,7 @@ def test_contact_date_cannot_be_filled(page_ru: Page) -> None:
 )
 
 # проверка настоящей и будущих дат
+@pytest.mark.regression
 @pytest.mark.p2
 def test_contact_form_date_picker_choose(page_ru, days_from_today):
     bmb_main_page = MainPage(page_ru)
@@ -192,6 +203,7 @@ def test_contact_form_date_picker_choose(page_ru, days_from_today):
 
 
 @pytest.mark.p3
+@pytest.mark.regression
 def test_contact_form_event_type(page_ru):
     bmb_main_page = MainPage(page_ru)
 
@@ -202,6 +214,7 @@ def test_contact_form_event_type(page_ru):
     bmb_main_page.open_event_type()
     expect(bmb_main_page.contact_event_type_option).not_to_be_visible()
 
+@pytest.mark.regression
 @pytest.mark.p3
 @pytest.mark.parametrize(
     "event_type", [
