@@ -7,6 +7,7 @@ class Header:
     def __init__(self, page):
         self.page = page
 
+        self.header = self.page.get_by_test_id("header")
         # лого
         self.logo_button = self.page.get_by_test_id("header-logo")
         # меню видео
@@ -25,6 +26,7 @@ class Header:
         self.az_lang_button =  self.page.get_by_test_id("header-lang-az")
         # Кнопка "купить билет"
         self.buy_ticket_button = self.page.get_by_test_id("header-buy-ticket")
+        self.buy_ticket_button_mobile = self.page.get_by_test_id("header-buy-ticket-mobile")
         # Вотсап
         self.whatsapp_button_header = self.page.get_by_test_id("header-whatsapp")
 

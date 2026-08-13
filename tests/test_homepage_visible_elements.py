@@ -1,68 +1,42 @@
 from playwright.sync_api import Page, expect
 import pytest
+from pages import home_page
+from pages.components import header,footer
+
+
 
 @pytest.mark.smoke
-def test_homepage_opens(homepage: Page):
-    expect(homepage).to_have_url("/ru")
+@pytest.mark.p0
+def test_page_ru_opens(page_ru: Page):
+    expect(page_ru).to_have_url("/ru")
 
 @pytest.mark.smoke
-def test_header_visible(homepage: Page):
-    expect(
-        homepage.get_by_test_id("header")
-    ).to_be_visible()
+@pytest.mark.p1
+def test_header_visible(page_ru: Page):
+    header_page = header.Header(page_ru)
 
-    expect(
-        homepage.get_by_test_id("header-logo")
-    ).to_be_visible()
-
-    expect(
-        homepage.get_by_test_id("header-lang-ru")
-    ).to_be_visible()
-
-    expect(
-        homepage.get_by_test_id("header-lang-en")
-    ).to_be_visible()
-
-    expect(
-        homepage.get_by_test_id("header-lang-az")
-    ).to_be_visible()
-
-    expect(
-        homepage.get_by_test_id("header-buy-ticket")
-    ).to_be_visible()
-
-    expect(
-        homepage.get_by_test_id("header-whatsapp")
-    ).to_be_visible()
-
-    expect(
-        homepage.get_by_test_id("header-nav-videos")
-    ).to_be_visible()
-
-    expect(
-        homepage.get_by_test_id("header-nav-repertoire")
-    ).to_be_visible()
-
-    expect(
-        homepage.get_by_test_id("header-nav-reviews")
-    ).to_be_visible()
-
-    expect(
-        homepage.get_by_test_id("header-nav-contact")
-    ).to_be_visible()
+    expect(header_page.header).to_be_visible()
+    expect(header_page.logo_button).to_be_visible()
+    expect(header_page.ru_lang_button).to_be_visible()
+    expect(header_page.en_lang_button).to_be_visible()
+    expect(header_page.az_lang_button).to_be_visible()
+    expect(header_page.buy_ticket_button).to_be_visible()
+    expect(header_page.whatsapp_button_header).to_be_visible()
+    expect(header_page.video_menu_button).to_be_visible()
+    expect(header_page.repertoire_menu_button).to_be_visible()
+    expect(header_page.reviews_menu_button).to_be_visible()
+    expect(header_page.contacts_menu_button).to_be_visible()
 
 @pytest.mark.smoke
-def test_footer_visible(homepage: Page):
-    expect(
-        homepage.get_by_test_id("footer")
-    ).to_be_visible()
+@pytest.mark.p1
+def test_footer_visible(page_ru: Page):
+    footer_page = footer.Footer(page_ru)
 
-    expect(
-        homepage.get_by_test_id("footer-logo")
-    ).to_be_visible()
+    expect(footer_page.footer).to_be_visible()
+    expect(footer_page.logo_button_footer).to_be_visible()
 
 @pytest.mark.smoke
-def test_homepage_main_content(homepage: Page):
-    expect(
-        homepage.get_by_role("main")
-    ).to_be_visible()
+@pytest.mark.p3
+def test_page_ru_main_content(page_ru: Page):
+    bmb_main_page = home_page.MainPage(page_ru)
+    expect(bmb_main_page.hero_block).to_be_visible()

@@ -6,14 +6,14 @@ from pathlib import Path
 
 
 @pytest.fixture
-def homepage(page: Page) -> Page:
+def page_ru(page: Page) -> Page:
     page.set_viewport_size({"width": 1920, "height": 1080})
     page.goto("/ru")
     return page
 
 @pytest.fixture
-def home_page(homepage: MainPage) -> MainPage:
-    return MainPage(homepage)
+def home_page(page_ru: MainPage) -> MainPage:
+    return MainPage(page_ru)
 
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item, call):
