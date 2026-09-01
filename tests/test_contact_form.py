@@ -248,6 +248,7 @@ def test_send_full_valid_data_contact_form(page_ru, ):
     bmb_main_page.open_calendar()
     bmb_main_page.select_date(date.today())
     bmb_main_page.fill_message("Тестовое сообщение, которое отправлено при прохождении Smoke теста")
+    bmb_main_page.click_access_privacy()
 
     with page_ru.expect_response(
         lambda responce: "_serverFn/" in responce.url

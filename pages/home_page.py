@@ -89,6 +89,9 @@ class MainPage():
         # ссылка на телефон в футере
         self.phone_link_footer = self.page.get_by_test_id("footer-phone")
 
+        # галочка подтверждения согласия с обработкой
+        self.confirm_policy = self.contact_form.get_by_test_id("contact-consent-input")
+
 
 
 
@@ -138,5 +141,8 @@ class MainPage():
 
     def get_selected_date(self):
         return self.contact_date_trigger.inner_text()
+
+    def click_access_privacy(self):
+        self.confirm_policy.click()
 
 
