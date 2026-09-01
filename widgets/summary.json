@@ -1,1 +1,1 @@
-{"reportName":"Deploy dev #36","testRuns":[],"statistic":{"failed":0,"broken":1,"skipped":0,"passed":18,"unknown":0,"total":19},"time":{"start":1788269039987,"stop":1788269111354,"duration":71367,"minDuration":70,"maxDuration":31332,"sumDuration":37180}}
+{"reportName":"Deploy dev #36","testRuns":[],"statistic":{"failed":0,"broken":0,"skipped":0,"passed":19,"unknown":0,"total":19},"time":{"start":1788269830544,"stop":1788269865077,"duration":34533,"minDuration":84,"maxDuration":4296,"sumDuration":10321}}
