@@ -1,1 +1,1 @@
-{"name":"Deploy dev #46","stats":{"failed":0,"broken":0,"skipped":0,"passed":19,"unknown":0,"total":19},"status":"passed","duration":50257,"createdAt":1795557859537,"plugin":"Allure2","meta":{"reportId":"edcf9a4a-4242-4538-a5a5-f67505821a44","singleFile":false}}
+{"name":"Deploy dev #47","stats":{"failed":0,"broken":0,"skipped":0,"passed":19,"unknown":0,"total":19},"status":"passed","duration":46925,"createdAt":1795563130515,"plugin":"Allure2","meta":{"reportId":"331ba5d6-18d7-4f4d-b834-a96ce1c8b602","singleFile":false}}
