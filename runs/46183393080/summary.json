@@ -1,0 +1,1 @@
+{"name":"Deploy dev #57","stats":{"failed":2,"broken":1,"skipped":0,"passed":16,"unknown":0,"total":19},"status":"failed","duration":91370,"createdAt":1795895818308,"plugin":"Allure2","meta":{"reportId":"983df805-2b77-4dec-b5ef-dc7d59400768","singleFile":false}}
